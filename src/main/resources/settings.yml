@@ -1,0 +1,28 @@
+#MySQL info [JDBC]
+url: "jdbc:mysql://localhost/NationLayer"
+user: "root"
+password: "password"
+
+#Relation Colors
+#  Black (black)
+#  Dark Blue (dark_blue)
+#  Dark Green (dark_green)
+#  Dark Aqua (dark_aqua)
+#  Dark Red (dark_red)
+#  Dark Purple (dark_purple)
+#  Gold (gold)
+#  Gray (gray)
+#  Dark Gray (dark_gray)
+#  Blue (blue)
+#  Green (green)
+#  Aqua (aqua)
+#  Red (red)
+#  Light Purple (light_purple)
+#  Yellow (yellow)
+#  White (white)
+
+neutral: "yellow"
+hostile: "red"
+warring: "dark_red"
+ally: "blue"
+friendly: "green"

@@ -1,0 +1,7 @@
+name: NationLayer
+version: '${project.version}'
+main: com.capri.nationlayer.NationLayer
+api-version: 1.19
+prefix: NtL
+authors: [ Capri ]
+description: Spin off of NameLayer, rebuilt from the ground up
