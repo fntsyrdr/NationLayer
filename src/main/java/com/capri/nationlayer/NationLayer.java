@@ -49,7 +49,7 @@ public final class NationLayer extends JavaPlugin {
     }
 
     public void getCommands(){
-        getCommand("AcceptInvite").setExecutor(new CommandHandler());
+        getCommand("Nationlayer").setExecutor(new CommandHandler());
 
 
     }

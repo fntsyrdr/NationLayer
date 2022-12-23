@@ -1,9 +1,7 @@
 package com.capri.nationlayer.model.faction;
 
-import com.capri.nationlayer.model.struct.PermissionLevels;
+import com.capri.nationlayer.model.struct.Roles;
 import com.capri.nationlayer.model.struct.Relation;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -42,13 +40,13 @@ public class Nation {
     }
 
     public NationPlayer getOwner(){
-        return this.members.values().stream().filter(member -> member.getRole() == PermissionLevels.PRIMARY_OWNER).findFirst().orElse(null);
+        return this.members.values().stream().filter(member -> member.getRole() == Roles.PRIMARY_OWNER).findFirst().orElse(null);
     }
 
     public Relation getRelation(Nation other) {
         Nation nation = this;
 
-        return nation == other ? Relation.MEMBER : nation.isAlly(other) ? Relation.ALLY : Relation.HOSTILE;
+        return nation == other ? Relation.NEUTRAL : nation.isAlly(other) ? Relation.ALLY : Relation.HOSTILE;
     }
 
     public UUID getId() {

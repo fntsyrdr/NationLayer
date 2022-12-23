@@ -1,6 +1,6 @@
 package com.capri.nationlayer.model.faction;
 
-import com.capri.nationlayer.model.struct.PermissionLevels;
+import com.capri.nationlayer.model.struct.Roles;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -10,11 +10,12 @@ public class NationPlayer {
 
     private UUID uuid;
     private UUID nationId;
-    private PermissionLevels role;
+    private Roles role;
 
-    public NationPlayer(UUID uuid, Nation nation){
+    public NationPlayer(UUID uuid, Nation nation, Roles role){
         this.uuid = uuid;
         this.nationId = nation.getId();
+        this.role = role;
     }
 
     public UUID getNationId() {
@@ -28,7 +29,7 @@ public class NationPlayer {
         return Bukkit.getPlayer(this.uuid);
     }
 
-    public PermissionLevels getRole() {
+    public Roles getRole() {
         return role;
     }
 }
