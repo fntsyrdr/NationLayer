@@ -14,7 +14,8 @@ public class Nation {
     private String password;
     private UUID owner;
     private List<UUID> allies;
-    private List<UUID> war;
+
+    private List<UUID> enemies;
     private boolean isDisciplined;
     private boolean isValid = true;
     private UUID id;
@@ -37,6 +38,11 @@ public class Nation {
         this.isSuperGroup = isSuperGroup;
         this.members = new HashMap<>();
         this.allies = new ArrayList<>();
+        this.enemies = new ArrayList<>();
+    }
+
+    public String getPassword(){
+        return this.password;
     }
 
     public NationPlayer getOwner(){
@@ -59,7 +65,7 @@ public class Nation {
         return this.getMember(Bukkit.getOfflinePlayer(name));
     }
     public NationPlayer getMember(Player player){
-        return this.getMember(player.getUniqueId());
+        return this.getMember(player);
     }
     public NationPlayer getMember(UUID uuid){
         return this.members.get(uuid);
@@ -78,8 +84,23 @@ public class Nation {
     public void addAlly(Nation nation){
         this.allies.add(nation.getId());
     }
+    public boolean isEnemy(Nation nation){
+        if(nation ==null) return false;
+        return this.enemies.contains(nation.getId());
+    }
+    public void addEnemy(Nation nation){this.enemies.add(nation.getId());}
     public List<Nation> getAlliesAsNations(){
         return this.allies.stream().map(NationManager.getInstance()::getNationByUUID).collect(Collectors.toList());
+    }
+    public List<Nation> getEnemiesAsNations(Nation nation){
+        return this.enemies.stream().map(NationManager.getInstance()::getNationByUUID).collect(Collectors.toList());
+    }
+    public List<UUID> getAllies(){
+        return allies;
+    }
+
+    public List<UUID> getEnemies() {
+        return enemies;
     }
 
     public String getName() {

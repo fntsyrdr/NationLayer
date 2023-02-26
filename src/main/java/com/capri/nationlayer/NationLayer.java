@@ -2,44 +2,37 @@ package com.capri.nationlayer;
 
 import com.capri.nationlayer.command.CommandHandler;
 import com.capri.nationlayer.config.ConfigManager;
+import com.capri.nationlayer.db.Database;
 import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public final class NationLayer extends JavaPlugin {
 
     public static NationLayer instance;
+    public Database db;
+
+
+
 
 
     @Override
     public void onEnable() {
         instance = this;
         ConfigManager.init(this);
-
-
-
-
-
-        String url = ConfigManager.JDBC_URL;
-        String user= ConfigManager.MYSQL_USER;
-        String password = ConfigManager.MYSQL_PASSWORD;
-
         try {
             System.out.println(ChatColor.translateAlternateColorCodes('&', "&eStarting Database Connection"));
-            Connection connection = DriverManager.getConnection(url, user, password);
+            db = new Database(ConfigManager.JDBC_URL, ConfigManager.MYSQL_USER, ConfigManager.MYSQL_PASSWORD);
             System.out.println(ChatColor.translateAlternateColorCodes('&', "&aDatabase Connection Complete!"));
 
-
-
+            System.out.println(ChatColor.translateAlternateColorCodes('&', "&eChecking Migration..."));
+            db.migrateTables();
         } catch (SQLException e) {
-            System.out.println(ChatColor.translateAlternateColorCodes('&',"&cConnection failed!"));
-            e.printStackTrace();
             throw new RuntimeException(e);
         }
+
 
     }
 

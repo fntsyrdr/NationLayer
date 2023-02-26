@@ -5,3 +5,8 @@ api-version: 1.19
 prefix: NtL
 authors: [ Capri ]
 description: Spin off of NameLayer, rebuilt from the ground up
+commands:
+  NationLayer:
+    description: Nation Layer Base Command
+    aliases: [nl]
+

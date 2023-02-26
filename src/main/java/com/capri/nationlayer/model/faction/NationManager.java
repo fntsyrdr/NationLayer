@@ -16,7 +16,7 @@ public class NationManager {
         return this.nationNames.get(name) != null;
     }
     private NationPlayer getPlayer(Player player){
-        return this.getPlayer(player.getUniqueId());
+        return this.getPlayer(player);
     }
     private NationPlayer getPlayer(UUID uuid){
         return this.players.get(uuid);
